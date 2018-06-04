@@ -31,9 +31,9 @@ install:
   - popd
 
 script:
-  - mkdir build
-  - cd build
-  - cmake -D GTEST_ROOT:PATH=$HOME/googletest ..
+#  - mkdir build
+#  - cd build
+  - cmake -D GTEST_ROOT:PATH=$HOME/googletest
   - make
   - make test
 
