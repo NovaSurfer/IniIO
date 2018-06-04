@@ -36,8 +36,8 @@ script:
   - cmake -D GTEST_ROOT:PATH=$HOME/googletest ~/build/NovaSurfer/IniIO
   - make
   - make test
-  - echo ls
-  - echo ls ./bin
+  - ls
+  - ls ./bin
 
 notifications:
   email: false
