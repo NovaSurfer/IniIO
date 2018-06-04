@@ -12,7 +12,7 @@ find_package(Threads REQUIRED)
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(IniIO src/ini_io.h src/ini_io.cpp tests/ini_io_test.cpp)
+add_executable(IniIO src/ini_io.h src/ini_io.cpp tests/ini_io_test.cpp testdata/testIni_01.ini)
 
 configure_file(${CMAKE_SOURCE_DIR}/testdata/testIni_01.ini ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COPYONLY)
 
