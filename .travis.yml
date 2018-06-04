@@ -33,7 +33,7 @@ install:
 script:
 #  - mkdir build
 #  - cd build
-  - cmake -D GTEST_ROOT:PATH=$HOME/googletest ..
+  - cmake -D GTEST_ROOT:PATH=$HOME/googletest ~/build/NovaSurfer/IniIO
   - make
   - make test
 
