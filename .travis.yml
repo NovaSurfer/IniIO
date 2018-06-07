@@ -16,11 +16,6 @@ matrix:
 
 before_install:
   - eval "${MATRIX_EVAL}"
-#  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-#  - sudo apt-get update -q
-#  - sudo apt-get install gcc-8 -y
-#  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 800 --slave /usr/bin/g++ g++ /usr/bin/g++-8
-#  - sudo update-alternatives --config gcc
 
 install:
   - mkdir ~/googletest
@@ -31,13 +26,11 @@ install:
   - popd
 
 script:
-#  - mkdir build
-#  - cd build
-  - cmake -D GTEST_ROOT:PATH=$HOME/googletest ~/build/NovaSurfer/IniIO
+  - mkdir build
+  - cd build
+  - cmake -D GTEST_ROOT:PATH=$HOME/googletest ..
   - make
   - make test
-  - ls
-  - ls ./bin
 
 notifications:
   email: false
