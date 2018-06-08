@@ -1,7 +1,7 @@
 sudo: required
 script:
-  - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-8 /usr/bin/gcc
-  - gcc --version
+  - sudo update-alternatives --remove-all gcc
+  - sudo update-alternatives --remove-all g++
 addons:
   apt:
     sources:
