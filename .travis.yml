@@ -1,20 +1,10 @@
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-8
-      env:
-         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-
 before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update
+  - sudo apt-get install gcc-8 g++-8
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-8
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 40 --slave /usr/bin/g++ g++ /usr/bin/g++-8
-  - sudo update-alternatives --config gcc
-  - eval "${MATRIX_EVAL}"
+  - sudo update-alternatives --config gcc"
 
 install:
   - mkdir ~/googletest
