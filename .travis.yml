@@ -1,23 +1,15 @@
 sudo: required
-language:
-  - cpp
-
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-8
-      env:
-         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+language: cpp
+compiler: gcc
+dist: trusty
 
 before_install:
-  - eval "${MATRIX_EVAL}"
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
 
 install:
+  - sudo apt-get install -qq g++-8
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90
   - mkdir ~/googletest
   - pushd ~/googletest
   - wget -qO - https://github.com/google/googletest/archive/release-1.8.0.tar.gz | tar -xz
