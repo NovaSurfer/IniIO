@@ -1,14 +1,12 @@
-sudo: required
-script:
-  - sudo update-alternatives --remove-all gcc
-  - sudo update-alternatives --remove-all g++
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - gcc-8
-    - g++-8
+language: cpp
+os: linux
+dist: trusty
+sudo: false
+
+matrix:
+  include:
+    - env: COMPILER=g++-8
+      addons: { apt: { packages: ["g++-8"], sources: ["ubuntu-toolchain-r-test"] } }
 
 install:
   - mkdir ~/googletest
