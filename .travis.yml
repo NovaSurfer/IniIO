@@ -5,8 +5,8 @@ sudo: false
 
 matrix:
   include:
-    - env: COMPILER=g++-8
-      addons: { apt: { packages: ["g++-8"], sources: ["ubuntu-toolchain-r-test"] } }
+    - env: COMPILER=g++-7
+      addons: { apt: { packages: ["g++-7"], sources: ["ubuntu-toolchain-r-test"] } }
 
 install:
   - mkdir ~/googletest
