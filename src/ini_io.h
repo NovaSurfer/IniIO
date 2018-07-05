@@ -23,11 +23,13 @@ class IniIO {
 public:
     explicit IniIO(const std::string &filename);
 
-    std::string get_value(const std::string &section_name, const std::string &key) const;
+    std::string get_value(std::string_view section_name, std::string_view key) const;
 
-    std::string get_value(const std::string &key) const;
+    std::string get_value(std::string_view key) const;
 
-    void set_value(const std::string &section_name, const std::string &key, const std::string &value);
+    std::vector<std::pair<std::string, std::string>> get_kvps(std::string_view section_name) const;
+
+    void set_value(std::string_view section_name, std::string_view key, std::string_view value);
 
 private:
     std::string filename;
@@ -35,11 +37,11 @@ private:
 
     void save_file();
 
-    std::pair<ptrdiff_t, ptrdiff_t> get_positions(const std::string &section_name, const std::string &key) const;
+    std::pair<ptrdiff_t, ptrdiff_t> get_positions(std::string_view section_name, std::string_view key) const;
 
-    ptrdiff_t get_section_pos(const std::string &section) const;
+    ptrdiff_t get_section_pos(std::string_view section) const;
 
-    ptrdiff_t get_key_pos(const std::string &key, ptrdiff_t section_pos) const;
+    ptrdiff_t get_key_pos(std::string_view key, ptrdiff_t section_pos) const;
 
     bool is_section(std::string str, std::cmatch &results) const;
 
