@@ -1,12 +1,12 @@
-language: cpp
-os: linux
 dist: trusty
-sudo: false
-
-matrix:
-  include:
-    - env: COMPILER=g++-7
-      addons: { apt: { packages: ["g++-7"], sources: ["ubuntu-toolchain-r-test"] } }
+language: cpp
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-7
+      - g++-7
 
 install:
   - mkdir ~/googletest
@@ -17,6 +17,8 @@ install:
   - popd
 
 script:
+  - export CC=gcc-7
+  - export CXX=g++-7
   - mkdir build
   - cd build
   - cmake -D GTEST_ROOT:PATH=$HOME/googletest ..
